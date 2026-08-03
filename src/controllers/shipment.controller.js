@@ -1,7 +1,7 @@
 const getAllShipments = (req, res) => {
     res.status(200).json({
         status: "success",
-        message: "All Shipments Recieved"
+        message: "All Shipments Received"
     });
 };
 
@@ -10,7 +10,7 @@ const getAllShipmentsById = (req, res) => {
 
     res.status(200).json({
         status: "success",
-        message: `Shipment ${shipmentId} Revieved`
+        message: `Shipment ${shipmentId} Received`
     });
 };
 

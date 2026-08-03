@@ -1,4 +1,4 @@
-const exports = require("express");
+const express = require("express");
 
 const {getAllShipments, getAllShipmentsById} = require("../controllers/shipment.controller");
 
