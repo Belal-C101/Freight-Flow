@@ -9,7 +9,7 @@
   "name": "freight-flow",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "devDependencies": {
     "nodemon": "^3.1.14"
   },
