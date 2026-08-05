@@ -42,12 +42,10 @@ const getById = async (req, res) => {
     const shipment = await Shipment.findById(_id);
 
     if (!shipment) {
-      if (!shipment) {
-        return res.status(404).json({
-          status: "not found",
-          message: "Shipment not found",
-        });
-      }
+      return res.status(404).json({
+        status: "not found",
+        message: "Shipment not found",
+      });
     }
 
     res.status(201).json({
@@ -68,12 +66,10 @@ const deleteById = async (req, res) => {
     const shipment = await Shipment.findByIdAndDelete(_id);
 
     if (!shipment) {
-      if (!shipment) {
-        return res.status(404).json({
-          status: "not found",
-          message: "Shipment not found",
-        });
-      }
+      return res.status(404).json({
+        status: "not found",
+        message: "Shipment not found",
+      });
     }
 
     res.status(201).json({
