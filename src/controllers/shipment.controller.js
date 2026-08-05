@@ -28,11 +28,6 @@ const getAll = async (req, res) => {
       status: "fail",
       message: error.message,
     });
-
-    res.status(404).json({
-      status: "not found",
-      message: error.message,
-    });
   }
 };
 
@@ -48,7 +43,7 @@ const getById = async (req, res) => {
       });
     }
 
-    res.status(201).json({
+    res.status(200).json({
       status: "found",
       data: shipment,
     });
@@ -72,7 +67,7 @@ const deleteById = async (req, res) => {
       });
     }
 
-    res.status(201).json({
+    res.status(200).json({
       status: "deleted",
       data: shipment,
     });
