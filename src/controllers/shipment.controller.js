@@ -18,10 +18,9 @@ const createShipment = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const shipment = await Shipment.find(req.body);
+    const shipment = await Shipment.find();
 
-    res.status(201).json({
-      status: "found",
+    res.status(200).json({
       data: shipment,
     });
   } catch (error) {
@@ -40,7 +39,16 @@ const getAll = async (req, res) => {
 const getById = async (req, res) => {
   try {
     const _id = req.params.id;
-    const shipment = await Shipment.findById(req.body._id);
+    const shipment = await Shipment.findById(_id);
+
+    if (!shipment) {
+      if (!shipment) {
+        return res.status(404).json({
+          status: "not found",
+          message: "Shipment not found",
+        });
+      }
+    }
 
     res.status(201).json({
       status: "found",
@@ -51,18 +59,22 @@ const getById = async (req, res) => {
       status: "fail",
       message: error.message,
     });
-
-    res.status(404).json({
-      status: "not found",
-      message: error.message,
-    });
   }
 };
 
 const deleteById = async (req, res) => {
   try {
     const _id = req.params.id;
-    const shipment = await Shipment.findByIdAndDelete(req.body._id);
+    const shipment = await Shipment.findByIdAndDelete(_id);
+
+    if (!shipment) {
+      if (!shipment) {
+        return res.status(404).json({
+          status: "not found",
+          message: "Shipment not found",
+        });
+      }
+    }
 
     res.status(201).json({
       status: "deleted",
@@ -71,11 +83,6 @@ const deleteById = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: "fail",
-      message: error.message,
-    });
-
-    res.status(404).json({
-      status: "not found",
       message: error.message,
     });
   }

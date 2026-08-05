@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/", createShipment);
 router.get("/", getAll);
-router.get("/", getById);
-router.delete("/", deleteById);
+router.get("/:id", getById);
+router.delete("/:id", deleteById);
 
 module.exports = router;
