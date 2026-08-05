@@ -1,17 +1,21 @@
-const getAllShipments = (req, res) => {
-    res.status(200).json({
-        status: "success",
-        message: "All Shipments Received"
+const Shipment = require("../models/shipment.model");
+
+const createShipment = async (req, res) => {
+  try {
+    const shipment = await Shipment.create(req.body);
+
+    res.status(201).json({
+      status: "success",
+      data: shipment,
     });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
 };
 
-const getAllShipmentsById = (req, res) => {
-    const shipmentId = req.params.id;
-
-    res.status(200).json({
-        status: "success",
-        message: `Shipment ${shipmentId} Received`
-    });
+module.exports = {
+  createShipment,
 };
-
-module.exports = {getAllShipments, getAllShipmentsById}
